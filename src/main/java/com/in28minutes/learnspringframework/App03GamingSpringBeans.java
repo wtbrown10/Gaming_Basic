@@ -8,16 +8,15 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class App03GamingSpringBeans {
     public static void main(String[] args) {
 
-        var context = new AnnotationConfigApplicationContext(GameRunner.GamingConfiguration.class);
-        context.getBean(GamingConsole.class);
+        try(// Create a spring context to manage GamingConfiguration class with the @bean GamingConsole
+            var context = new AnnotationConfigApplicationContext
+                    (GamingConfiguration.class)){
+
+            context.getBean(GamingConsole.class).up();
+
+            context.getBean(GameRunner.class).run();
+        }
 
 
-
-        //var game = new MarioGame();
-        //var game = new SuperContraGame();
-        var game = new PacmanGame();// object creation
-        var gameRunner = new GameRunner(game); // object creation + Wiring of Dependencies
-        // Game is a Dependency of gamerunner
-        gameRunner.run();
     }
 }

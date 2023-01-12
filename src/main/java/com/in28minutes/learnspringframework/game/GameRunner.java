@@ -2,6 +2,8 @@ package com.in28minutes.learnspringframework.game;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+
 
 public class GameRunner {
     private GamingConsole game;
@@ -18,19 +20,19 @@ public class GameRunner {
         game.right();
     }
 
-    @Configuration
-    public static class GamingConfiguration {
-        @Bean
-        public GamingConsole game() {
-            var game = new PacmanGame();
-            return game;
-        }
-
-        //var game = new MarioGame();
-        //var game = new SuperContraGame();
-        var game = new PacmanGame();// object creation
-        var gameRunner = new GameRunner(game); // object creation + Wiring of Dependencies
-        // Game is a Dependency of gamerunner
-            gameRunner.run();
+//    @Configuration
+//    public static class GamingConfiguration {
+//        @Bean
+//        public GamingConsole game() {
+//            var game = new PacmanGame();
+//            return game;
+//        }
+//
+//        //var game = new MarioGame();
+//        //var game = new SuperContraGame();
+//        var game = new PacmanGame();// object creation
+//        var gameRunner = new GameRunner(game); // object creation + Wiring of Dependencies
+//        // Game is a Dependency of gamerunner
+//            gameRunner.run();
     }
-}
+
